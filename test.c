@@ -1,48 +1,58 @@
-#include <stdlib.h>
-#include <mlx.h>
+#include "fdf.h"
+#include <stdio.h>
 
-#define WINDOW_WIDTH 1000
-#define WINDOW_HEIGHT 1000
-
-#define BLUE 0
-#define GREEN 1
-#define RED 2
-
-typedef union u_color
+int render_rect(t_screen *screen, t_rect rect)
 {
-	int	color;
-	char rgb[4];
-}	t_color;
+	int	x;
+	int	y;
 
-typedef struct s_screen
+	y = rect.y;
+	while (y < (rect.y + rect.height))
+	{
+		x = rect.x;
+		while (x < (rect.x + rect.width))
+			mlx_pixel_put(screen->mlx, screen->window, x++, y, rect.color);
+		y++;
+	}
+	return (0);
+}
+
+int	render(t_screen *screen)
 {
-	void	*mlx;
-	void	*window;
-}	t_screen;
+	render_rect(screen, (t_rect){
+		(WINDOW_WIDTH / 2 - 50), (WINDOW_HEIGHT / 2 - 50),
+		100, 100, rgb_encode(0, 255, 0)
+	});
+	return (0);
+}
+
+int	handle_input(int keysym, t_screen *data)
+{
+	if (keysym == 53)
+	{
+		mlx_destroy_window(data->mlx, data->window);
+		exit(0);
+	}
+	return (0);
+}
+
+int	sair(t_screen *data)
+{
+	exit(0);
+}
 
 int main(void)
 {
 	t_screen	screen;	
-	t_color		line;
-	int i;
-
-	i = 0;
-	line.rgb[RED] = 0;
-	line.rgb[GREEN] = 0;
-	line.rgb[BLUE] = 255;
-
+	
 	screen.mlx = mlx_init();
 	screen.window = mlx_new_window(screen.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello, screen!");
-	while (i++ <= WINDOW_WIDTH)
-	{
-		mlx_pixel_put(screen.mlx, screen.window, i, WINDOW_HEIGHT / 2, line.color);
-	}
-	while (1)
-		;
-	mlx_destroy_window(screen.mlx, screen.window);
-	mlx_destroy_display(screen.mlx);
-	free(screen.mlx);
 	
+	render(&screen);
+	mlx_key_hook(screen.window, &handle_input, &screen);
+	mlx_hook(screen.window, 17, 0, &sair, &screen);
+	mlx_loop(screen.mlx);
+	//mlx_destroy_display(screen.mlx); -> only linux
+	free(screen.mlx);
+	return (0);
 }
-
-// cc test.c -lX11 -lXext -lmlx
