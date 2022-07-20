@@ -54,17 +54,17 @@ int	render(t_screen *screen)
 	return (0);
 }
 
-int	handle_input(int keysym, t_screen *data)
+int	handle_input(int keysym, t_screen *screen)
 {
 	if (keysym == 53)
 	{
-		mlx_destroy_window(data->mlx, data->window);
+		mlx_destroy_window(screen->mlx, screen->window);
 		exit(0);
 	}
 	return (0);
 }
 
-int	sair(t_screen *data)
+int	sair(t_screen *screen)
 {
 	exit(0);
 }
@@ -77,7 +77,7 @@ int main(void)
 	screen.window = mlx_new_window(screen.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "Hello, screen!");
 	screen.img.mlx_img = mlx_new_image(screen.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	screen.img.addr = mlx_get_data_addr(
-		&screen.img.mlx_img,
+		screen.img.mlx_img,
 		&screen.img.bpp,
 		&screen.img.line_len,
 		&screen.img.endian);
