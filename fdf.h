@@ -19,8 +19,8 @@
 #include <stdlib.h>
 #include <mlx.h>
 
-#define WINDOW_WIDTH 1000
-#define WINDOW_HEIGHT 1000
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGHT 720
 
 typedef union u_color
 {
@@ -28,10 +28,20 @@ typedef union u_color
 	char rgb[4];
 }	t_rgb;
 
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
+
 typedef struct s_screen
 {
 	void	*mlx;
 	void	*window;
+	t_img	img;
 }	t_screen;
 
 typedef struct s_rect
