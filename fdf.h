@@ -6,18 +6,17 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:48:30 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/17 01:32:50 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/21 04:04:02 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 #define FDF_H
 
-// cc test.c -lX11 -lXext -lmlx -> linux
-// cc test.c -lmlx -framework OpenGL -framework AppKit
-
 #include <stdlib.h>
+#include <fcntl.h>
 #include <mlx.h>
+#include <stdio.h> // REMOVER!!
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
@@ -27,6 +26,14 @@ typedef union u_color
 	int	color;
 	char rgb[4];
 }	t_rgb;
+
+typedef struct s_pixel
+{
+	int	x;
+	int y;
+	int z;
+	int color;
+}	t_pixel;
 
 typedef struct s_img
 {
@@ -53,6 +60,7 @@ typedef struct s_rect
 	int color;
 }	t_rect;
 
-int	rgb_encode(short int red, short int green, short int blue);
+int		rgb_encode(short int red, short int green, short int blue);
+char	**load_map(char *file_path);
 
 #endif

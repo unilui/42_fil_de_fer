@@ -1,6 +1,3 @@
-#include "fdf.h"
-#include <stdio.h>
-
 void	img_pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*addr;
