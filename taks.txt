@@ -1,8 +1,8 @@
 OK -> Ler sobre Fabric
 OK -> Implementar img_pixel_put
 OK -> Criar makefile
--> Parsing do mapa
+OK -> Parsing do mapa
 -> Desenhar grade
 -> Organizar github project
--> Tratar detecção de SO no makefile e verificar warnings do CLANG
+OK -> Tratar detecção de SO no makefile e verificar warnings do CLANG
 -> Verificar erros da Load_map()

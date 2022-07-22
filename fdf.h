@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:48:30 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/21 04:04:02 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/22 06:05:04 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_pixel
 	int y;
 	int z;
 	int color;
+	short int	eol;
 }	t_pixel;
 
 typedef struct s_img
@@ -61,6 +62,8 @@ typedef struct s_rect
 }	t_rect;
 
 int		rgb_encode(short int red, short int green, short int blue);
-char	**load_map(char *file_path);
+t_pixel	**load_map(char *file_path);
+void	free_table(char **table);
+void	free_map(t_pixel **table);
 
 #endif

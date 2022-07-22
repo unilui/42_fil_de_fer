@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_functions.c                                  :+:      :+:    :+:   */
+/*   free_table.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/16 18:53:24 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/22 03:56:58 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/07/22 03:21:08 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/07/22 06:04:26 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	rgb_encode(short int red, short int green, short int blue)
+void	free_table(char **table)
 {
-	t_rgb color;
+	char **tmp;
 
-	if (red < 0 || red > 255)
-		red = 255;
-	if (green < 0 || green > 255)
-		green = 255;
-	if (blue < 0 || blue > 255)
-		blue = 255;	
-	color.rgb[3] = 0;
-	color.rgb[2] = red;
-	color.rgb[1] = green;
-	color.rgb[0] = blue;
-	return (color.color);
+	tmp = table;
+	while(*table)
+		free(*table++);
+	free(tmp);
+}
+
+void	free_map(t_pixel **table)
+{
+	t_pixel **tmp;
+
+	tmp = table;
+	while(*table)
+		free(*table++);
+	free(tmp);
 }

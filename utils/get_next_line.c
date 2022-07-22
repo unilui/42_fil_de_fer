@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 21:26:01 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/06/18 22:14:03 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/22 06:26:07 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,11 @@ static t_file	*find_or_add_fd(t_file **head, int fd)
 {
 	t_file	*tmp;
 
+	if (fd < 0)
+	{
+		delete_fd(head, -(fd));
+		return (NULL);
+	}
 	tmp = *head;
 	while (tmp)
 	{
@@ -122,6 +127,8 @@ static char	*delete_fd(t_file **head, int fd)
 					previous->next = tmp->next;
 				if (tmp->buffer)
 					free(tmp->buffer);
+				if (tmp->line)
+					free(tmp->line);
 				free(tmp);
 				return (NULL);
 			}

@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 21:26:05 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/21 05:00:13 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/22 04:51:38 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ char	*ft_strdup(const char *s);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strrchr(const char *s, int c);
 char	**ft_split(char const *s, char c);
+int		ft_atoi(const char *nptr);
 
 #endif
