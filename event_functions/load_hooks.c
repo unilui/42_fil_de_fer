@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   load_hooks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 01:39:57 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/23 06:54:12 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/07/23 05:42:04 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/07/23 07:47:33 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-int main(int argc, char **argv)
+void	load_hooks(t_screen *screen)
 {
-	t_screen	screen;
-
-	if (argc == 2)
-	{
-		screen = load_mlx();
-		screen.map = load_map(argv[1]);
-		load_hooks(&screen);
-		render_grid(&screen);
-	}
-	else
-		return (2);
-	return (0);
+	mlx_loop_hook(screen->mlx, &render, screen);
+	mlx_key_hook(screen->window, &handle_input, screen);
+	mlx_hook(screen->window, 17, 0, &sair, screen);
 }

@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   img_pixel_put.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 01:39:57 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/23 06:54:12 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/07/23 07:15:52 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/07/23 07:16:51 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-int main(int argc, char **argv)
+void	img_pixel_put(t_img *img, int x, int y, int color)
 {
-	t_screen	screen;
+	char	*addr;
+	int		*pixel;
 
-	if (argc == 2)
-	{
-		screen = load_mlx();
-		screen.map = load_map(argv[1]);
-		load_hooks(&screen);
-		render_grid(&screen);
-	}
-	else
-		return (2);
-	return (0);
+	addr = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	pixel = (int *)addr;
+	*pixel = color;
 }

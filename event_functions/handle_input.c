@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   handle_input.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 01:39:57 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/23 06:54:12 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/07/23 07:44:03 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/07/23 07:51:11 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-int main(int argc, char **argv)
+int	handle_input(int keysym, t_screen *screen)
 {
-	t_screen	screen;
-
-	if (argc == 2)
+	if (keysym == 53)
 	{
-		screen = load_mlx();
-		screen.map = load_map(argv[1]);
-		load_hooks(&screen);
-		render_grid(&screen);
+		mlx_destroy_window(screen->mlx, screen->window);
+		exit(0);
 	}
-	else
-		return (2);
 	return (0);
 }

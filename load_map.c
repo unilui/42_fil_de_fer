@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 02:36:13 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/22 06:12:11 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/23 02:54:09 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,18 @@
 
 static int		all_lines(char *file_path);
 static int		line_len(char *file_path);
-static t_pixel	*split_line(int fd, int line_len, int y);
+static t_pixel	*split_line(int fd, int line_len);
 static t_pixel	pixel_format(char *data, int x, int y);
 
-t_pixel **load_map(char *file_path)
+t_pixel	**load_map(char *file_path)
 {
-	t_pixel **map;
+	t_pixel	**map;
 	int		lines;
 	int		len;
 	int		fd;
 	int		y;
 
 	y = 0;
-	lines = 0;
-	map = NULL;
 	fd = open(file_path, O_RDONLY);
 	if (fd != -1)
 		lines = all_lines(file_path);
@@ -39,19 +37,20 @@ t_pixel **load_map(char *file_path)
 		if (!map)
 			return (NULL);
 		while (y < lines)
-			map[y++] = split_line(fd, len, y);
+			map[y++] = split_line(fd, len);
 		map[y] = NULL;
 		close(fd);
 	}
 	return (map);
 }
 
-static t_pixel	*split_line(int fd, int len, int y)
+static t_pixel	*split_line(int fd, int len)
 {
-	t_pixel	*line;
-	char	*file_line;
-	char	**splitted_line;
-	int		x;
+	t_pixel		*line;
+	char		*file_line;
+	char		**splitted_line;
+	static int	y;
+	int			x;
 
 	x = 0;
 	line = malloc((len) * sizeof(t_pixel));
@@ -60,8 +59,12 @@ static t_pixel	*split_line(int fd, int len, int y)
 	file_line = get_next_line(fd);
 	splitted_line = ft_split(file_line, ' ');
 	while (x < len)
-		line[x++] = pixel_format(splitted_line[x], x, y);
+	{
+		line[x] = pixel_format(splitted_line[x], x, y);
+		x++;
+	}
 	line[x - 1].eol = 1;
+	y++;
 	free(file_line);
 	free_table(splitted_line);
 	return (line);
@@ -75,7 +78,8 @@ static t_pixel	pixel_format(char *data, int x, int y)
 	pixel.y = --y;
 	pixel.z = ft_atoi(data);
 	if (ft_strrchr(data, ','))
-		pixel.color = rgb_encode(255, 255, 255); // Mudar pra função que converte hexa
+		pixel.color = rgb_encode(255, 255, 255);
+		// Mudar pra função que converte hexa
 	else
 		pixel.color = rgb_encode(255, 255, 255);
 	return (pixel);
@@ -92,7 +96,7 @@ static int	line_len(char *file_path)
 	fd = open(file_path, O_RDONLY);
 	line = get_next_line(fd);
 	splitted_line = ft_split(line, ' ');
-	while(splitted_line[len])
+	while (splitted_line[len])
 		len++;
 	get_next_line(-(fd));
 	close(fd);
@@ -110,7 +114,7 @@ static int	all_lines(char *file_path)
 	lines = 0;
 	fd = open(file_path, O_RDONLY);
 	tmp = get_next_line(fd);
-	while(tmp)
+	while (tmp)
 	{
 		free(tmp);
 		tmp = get_next_line(fd);

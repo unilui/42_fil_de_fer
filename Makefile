@@ -9,13 +9,23 @@ SRCS 		=	fdf.c	color_functions.c load_map.c \
 				utils/ft_strtrim.c \
 				utils/ft_strrchr.c \
 				utils/ft_atoi.c \
-				free_table.c
+				free_table.c \
+				load_mlx.c \
+				event_functions/load_hooks.c \
+				event_functions/handle_input.c \
+				event_functions/exit_fdf.c \
+				render_functions/render_grid.c \
+				render_functions/img_pixel_put.c \
+				render_functions/render_background.c \
+				render_functions/render_rect.c \
+				render_functions/render.c
+
 OBJS		=	${SRCS:%.c=$(OBJS_DIR)%.o}
 OBJS_DIR	=	objects/
 HEADER 		=	fdf.h utils/get_next_line.h
 NAME		=	fdf
 CC			=	cc
-CFLAGS		=	-g3
+CFLAGS		=	-g
 RM			=	rm -rf
 
 ifeq ($(shell uname), Darwin) # MacOS

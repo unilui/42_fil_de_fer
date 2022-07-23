@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   render_rect.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 01:39:57 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/23 06:54:12 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/07/23 07:19:04 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/07/23 07:19:21 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-int main(int argc, char **argv)
+int render_rect(t_img *img, t_rect rect)
 {
-	t_screen	screen;
+	int	x;
+	int	y;
 
-	if (argc == 2)
+	y = rect.y;
+	while (y < (rect.y + rect.height))
 	{
-		screen = load_mlx();
-		screen.map = load_map(argv[1]);
-		load_hooks(&screen);
-		render_grid(&screen);
+		x = rect.x;
+		while (x < (rect.x + rect.width))
+			img_pixel_put(img, x++, y, rect.color);
+		y++;
 	}
-	else
-		return (2);
 	return (0);
 }

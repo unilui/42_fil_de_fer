@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   load_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 01:39:57 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/23 06:54:12 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/07/23 05:26:36 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/07/23 07:09:00 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int main(int argc, char **argv)
+t_screen	load_mlx(void)
 {
 	t_screen	screen;
-
-	if (argc == 2)
-	{
-		screen = load_mlx();
-		screen.map = load_map(argv[1]);
-		load_hooks(&screen);
-		render_grid(&screen);
-	}
-	else
-		return (2);
-	return (0);
+	
+	screen.mlx = mlx_init();
+	screen.window = mlx_new_window(
+		screen.mlx,
+		WINDOW_WIDTH, WINDOW_HEIGHT,
+		"Hello, screen!"); // Nome do arquivo carregado
+	screen.img.mlx_img = mlx_new_image(
+		screen.mlx,
+		WINDOW_WIDTH, WINDOW_HEIGHT);
+	screen.img.addr = mlx_get_data_addr(
+		screen.img.mlx_img,
+		&screen.img.bpp,
+		&screen.img.line_len,
+		&screen.img.endian);
+	return (screen);
 }
