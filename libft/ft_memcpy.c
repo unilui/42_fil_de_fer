@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 03:45:49 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/21 03:45:55 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/05/31 19:40:37 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/06/08 21:37:05 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char			*str;
 	size_t			i;
-	unsigned int	s_len;
+	unsigned char	*us_dst;
+	unsigned char	*us_src;
 
 	i = 0;
-	if (len == 0)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (start < s_len)
-		str = malloc(s_len - start + 1);
-	else
-		str = malloc(1);
-	if (str == NULL)
-		return (NULL);
-	while (s[start + i] && i < len && start < s_len)
+	us_dst = (unsigned char *)dst;
+	us_src = (unsigned char *)src;
+	while (i < n)
 	{
-		str[i] = s[start + i];
+		us_dst[i] = us_src[i];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	return (dst);
 }

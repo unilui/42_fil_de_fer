@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 04:50:00 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/22 04:50:14 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/06/03 21:05:25 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/06/05 19:50:58 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static int	is_space(char c)
 {

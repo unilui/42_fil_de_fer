@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 04:57:35 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/21 04:58:12 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/06/05 20:01:23 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/07/24 11:24:16 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strdup(char const *s)
 {
 	char	*str;
-	int		start;
-	int		end;
 	int		i;
+	int		len;
 
-	i = 0;
-	start = 0;
-	end = ft_strlen(s1);
-	while (s1[start] && ft_strrchr(set, s1[start]))
-		start++;
-	while (end >= 0 && ft_strrchr(set, s1[end]))
-		end--;
-	if (start < end)
-		str = malloc((end - start) + 2);
-	else
-		str = malloc(1);
-	if (str == NULL)
+	if (!s)
 		return (NULL);
-	while (start <= end)
-		str[i++] = s1[start++];
+	i = 0;
+	len = ft_strlen(s);
+	str = malloc(len + 1);
+	if (!str)
+		return (NULL);
+	while (s[i])
+	{
+		str[i] = s[i];
+		i++;
+	}
 	str[i] = '\0';
 	return (str);
 }

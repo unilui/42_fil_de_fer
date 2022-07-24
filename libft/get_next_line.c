@@ -6,11 +6,11 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 21:26:01 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/22 06:26:07 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/24 12:08:29 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static t_file	*find_or_add_fd(t_file **head, int fd);
 static t_file	*add_fd(t_file **head, int fd);

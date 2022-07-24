@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 03:46:12 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/21 03:46:21 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/06/06 15:33:07 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/06/16 05:24:28 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-char	*ft_strdup(char const *s)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
-	int		i;
 	int		len;
 
-	if (!s)
+	if (!s1 && !s2)
 		return (NULL);
-	i = 0;
-	len = ft_strlen(s);
+	len = ft_strlen(s1) + ft_strlen(s2);
 	str = malloc(len + 1);
 	if (!str)
 		return (NULL);
-	while (s[i])
+	if (s1)
 	{
-		str[i] = s[i];
-		i++;
+		while (*s1)
+			*str++ = *s1++;
 	}
-	str[i] = '\0';
-	return (str);
+	if (s2)
+	{
+		while (*s2)
+			*str++ = *s2++;
+	}
+	*str = '\0';
+	return (str -= len);
 }

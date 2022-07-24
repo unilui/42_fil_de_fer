@@ -6,12 +6,12 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 02:36:13 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/24 01:01:20 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/24 16:22:53 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "utils/get_next_line.h"
+#include "libft/libft.h"
 
 static int		all_lines(char *file_path);
 static int		line_len(char *file_path);

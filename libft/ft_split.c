@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 04:55:46 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/21 04:56:43 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/06/07 15:32:01 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/06/08 15:17:25 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static int	word_count(char const *s, char c);
 static char	*new_str(char const *s, int len);

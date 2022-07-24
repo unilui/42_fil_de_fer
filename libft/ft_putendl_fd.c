@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_chrpst.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 03:44:34 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/21 03:44:45 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/06/08 19:44:54 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/06/08 19:50:12 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int	ft_chrpst(char const *s, int c)
+void	ft_putendl_fd(char *s, int fd)
 {
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (-1);
-	while (*s)
-	{
-		if (*s == (char)c)
-			return (i);
-		s++;
-		i++;
-	}
-	if (*s == (char)c)
-		return (i);
-	return (-1);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

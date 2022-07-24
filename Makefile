@@ -1,14 +1,4 @@
 SRCS 		=	fdf.c	color_functions.c load_map.c \
-				utils/ft_chrpst.c \
-				utils/ft_strdup.c \
-				utils/ft_strjoin.c \
-				utils/ft_strlen.c \
-				utils/ft_substr.c \
-				utils/get_next_line.c \
-				utils/ft_split.c \
-				utils/ft_strtrim.c \
-				utils/ft_strrchr.c \
-				utils/ft_atoi.c \
 				free_table.c \
 				load_mlx.c \
 				event_functions/load_hooks.c \
@@ -37,7 +27,7 @@ $(OBJS_DIR)%.o:	%.c
 			@$(CC) -c $< -o $@
 
 $(NAME):	${OBJS}
-			${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+			${CC} ${CFLAGS} ${OBJS} -o ${NAME} libft/libft.a
 
 all:		${NAME}
 
@@ -45,7 +35,7 @@ run:		re
 			./${NAME} test_maps/42.fdf
 
 clean:
-			${RM} ${OBJS}; ${RM} ${OBJS_DIR}
+			${RM} ${OBJS_DIR}
 
 fclean:		clean
 			${RM} ${NAME}

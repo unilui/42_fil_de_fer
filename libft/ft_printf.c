@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 03:30:28 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/21 03:34:02 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/06/20 17:30:47 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/07/24 12:08:10 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_printf(const char *str, ...)
 {
-	size_t	i;
+	t_str	str_args;
 
-	i = 0;
-	if (s)
+	va_start(str_args.args, str);
+	str_args.written = 0;
+	if (str)
 	{
-		while (*s++)
-			i++;
+		while (*str)
+		{
+			str_args.chr = *str;
+			replace_handler(&str_args);
+			str++;
+		}
 	}
-	return (i);
+	va_end(str_args.args);
+	return (str_args.written);
 }
