@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 02:36:13 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/23 02:54:09 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/24 01:01:20 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static int		all_lines(char *file_path);
 static int		line_len(char *file_path);
 static t_pixel	*split_line(int fd, int line_len);
-static t_pixel	pixel_format(char *data, int x, int y);
+static t_pixel	pixel_format(char *data);
 
 t_pixel	**load_map(char *file_path)
 {
@@ -49,7 +49,6 @@ static t_pixel	*split_line(int fd, int len)
 	t_pixel		*line;
 	char		*file_line;
 	char		**splitted_line;
-	static int	y;
 	int			x;
 
 	x = 0;
@@ -60,22 +59,21 @@ static t_pixel	*split_line(int fd, int len)
 	splitted_line = ft_split(file_line, ' ');
 	while (x < len)
 	{
-		line[x] = pixel_format(splitted_line[x], x, y);
+		line[x] = pixel_format(splitted_line[x]);
 		x++;
 	}
 	line[x - 1].eol = 1;
-	y++;
 	free(file_line);
 	free_table(splitted_line);
 	return (line);
 }
 
-static t_pixel	pixel_format(char *data, int x, int y)
+static t_pixel	pixel_format(char *data)
 {
 	t_pixel	pixel;
 
-	pixel.x = --x;
-	pixel.y = --y;
+	pixel.x = 0;
+	pixel.y = 0;
 	pixel.z = ft_atoi(data);
 	if (ft_strrchr(data, ','))
 		pixel.color = rgb_encode(255, 255, 255);

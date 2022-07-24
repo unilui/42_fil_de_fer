@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:48:30 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/23 07:47:17 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/24 05:22:11 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <mlx.h>
+#include <math.h> // NÃO QUEREMOS ISSO AQUI!!
 #include <stdio.h> // REMOVER!!
 
 #define WINDOW_WIDTH 1280
