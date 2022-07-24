@@ -7,12 +7,11 @@ SRCS 		=	fdf.c	color_functions.c load_map.c \
 				render_functions/render_grid.c \
 				render_functions/img_pixel_put.c \
 				render_functions/render_background.c \
-				render_functions/render_rect.c \
 				render_functions/render.c
 
 OBJS		=	${SRCS:%.c=$(OBJS_DIR)%.o}
 OBJS_DIR	=	objects/
-HEADER 		=	fdf.h utils/get_next_line.h
+HEADER 		=	fdf.h
 NAME		=	fdf
 CC			=	cc
 CFLAGS		=	-g
@@ -26,19 +25,19 @@ $(OBJS_DIR)%.o:	%.c
 			@mkdir -p $(dir $@)
 			@$(CC) -c $< -o $@
 
-$(NAME):	${OBJS}
-			${CC} ${CFLAGS} ${OBJS} -o ${NAME} libft/libft.a
+$(NAME):	$(OBJS)
+			@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) libft/libft.a
 
-all:		${NAME}
+all:		$(NAME)
 
 run:		re
-			./${NAME} test_maps/42.fdf
+			./$(NAME) test_maps/42.fdf
 
 clean:
-			${RM} ${OBJS_DIR}
+			@$(RM) $(OBJS_DIR)
 
 fclean:		clean
-			${RM} ${NAME}
+			@$(RM) $(NAME)
 
 re:			fclean all
 
