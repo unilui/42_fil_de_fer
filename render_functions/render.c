@@ -6,80 +6,80 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 07:27:39 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/24 11:17:53 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/27 07:56:01 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-void	dda_line(t_img *img, t_pixel start, t_pixel end)
+void	ft_swap(int *a, int *b)
 {
-	float	slope;
-	int		x;
-	int		y;
+	int	hold;
 
+	hold = *a;
+	*a = *b;
+	*b = hold;
+}
+
+void	bresenham_line(t_img *img, t_pixel start, t_pixel end)
+{
+	int	dx;
+	int	dy;
+	int	p;
+	int	x;
+	int	y;
+
+	if (start.x > end.x || start.y > end.y)
+	{
+		ft_swap(&start.x, &end.x);
+		ft_swap(&start.y, &end.y);
+	}
+	dx = end.x - start.x;
+	dy = end.y - start.y;
 	x = start.x;
 	y = start.y;
-	slope = 1;
-	if (start.x != end.x)
-		slope = (end.y - y) / (end.x - x);
-	// Tá pulando 1
-	if (slope < 1)
+	p = 2 * dy - dx;
+	img_pixel_put(img, x, y, rgb_encode(255, 140, 190));
+	while (x < end.x || y < end.y)
 	{
-		while (x < end.x)
+		if (p >= 0)
 		{
-			img_pixel_put(img,
-				((WINDOW_WIDTH / 2) + x),
-				((WINDOW_HEIGHT / 2) + y),
-				rgb_encode(255, 140, 190));
-			x += 1;
-			y += roundf(slope);
-			img_pixel_put(img,
-				((WINDOW_WIDTH / 2) + x),
-				((WINDOW_HEIGHT / 2) + y),
-				rgb_encode(255, 140, 190));
-			x++;
+			y = y + 1;
+			p = p + 2 * dy - 2 * dx;
 		}
+		else
+		{
+			x = x + 1;
+			p = p + 2 * dy;
+		}
+		img_pixel_put(img, x, y, rgb_encode(255, 140, 190));
 	}
-	else
-		while (y < end.y)
-		{
-			img_pixel_put(img,
-				((WINDOW_WIDTH / 2) + x),
-				((WINDOW_HEIGHT / 2) + y),
-				rgb_encode(255, 140, 190));
-			if (start.x != end.x)
-				x += roundf(slope);
-			y += 1;
-			img_pixel_put(img,
-				((WINDOW_WIDTH / 2) + x),
-				((WINDOW_HEIGHT / 2) + y),
-				rgb_encode(255, 140, 190));
-			y++;
-		}
 }
 
 void	render_map(t_img *img, t_pixel **map)
 {
-	int	y;
-	int	x;
+	int	line;
+	int	column;
 
-	y = 0;
-	x = 0;
-	while(map[y])
+	line = 0;
+	while (map[line])
 	{
-		x = 0;
-		while(map[y] + x)
+		column = 0;
+		while (map[line] + column)
 		{
-			if (!(map[y] + x)->eol)
-				dda_line(img, map[y][x], map[y][x + 1]);
-			if (map[y + 1])
-				dda_line(img, map[y + 1][x], map[y][x]);
-			if ((map[y] + x)->eol)
+			if (!(map[line] + column)->eol)
+				bresenham_line(img,
+					map[line][column],
+					map[line][column + 1]);
+			if (map[line + 1])
+				bresenham_line(img,
+					map[line][column],
+					map[line + 1][column]);
+			if ((map[line] + column)->eol)
 				break ;
-			x++;
+			column++;
 		}
-		y++;
+		line++;
 	}
 }
 

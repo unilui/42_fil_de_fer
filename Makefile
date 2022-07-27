@@ -14,11 +14,12 @@ OBJS_DIR	=	objects/
 HEADER 		=	fdf.h
 NAME		=	fdf
 CC			=	cc
-CFLAGS		=	-g
+CFLAGS		=	-Wall -Wextra -Werror
+LIBS		=	libft/libft.a -lmlx -lX11 -lXext -lm
 RM			=	rm -rf
 
 ifeq ($(shell uname), Darwin) # MacOS
-	CFLAGS	:= -lmlx -framework OpenGL -framework AppKit
+	LIBS	:=	libft/libft.a -lmlx -framework OpenGL -framework AppKit
 endif
 
 $(OBJS_DIR)%.o:	%.c
@@ -26,7 +27,7 @@ $(OBJS_DIR)%.o:	%.c
 			@$(CC) -c $< -o $@
 
 $(NAME):	$(OBJS)
-			@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) libft/libft.a
+			@$(CC) $(OBJS) -o $(NAME) $(LIBS)
 
 all:		$(NAME)
 

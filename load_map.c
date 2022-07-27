@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 02:36:13 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/24 16:22:53 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/26 23:37:38 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static t_pixel	pixel_format(char *data)
 	pixel.x = 0;
 	pixel.y = 0;
 	pixel.z = ft_atoi(data);
+	pixel.eol = 0;
 	if (ft_strrchr(data, ','))
 		pixel.color = rgb_encode(255, 255, 255);
 		// Mudar pra função que converte hexa
