@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   transformations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 01:39:57 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/26 20:18:28 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/07/28 05:28:30 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/07/28 05:29:25 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../fdf.h"
 
-int main(int argc, char **argv)
+void	scale(t_pixel *pixel, void *args)
 {
-	t_screen	screen;
+	int	*scale;
 
-	if (argc == 2)
-	{
-		screen = load_mlx();
-		screen.map = load_map(argv[1]);
-		load_hooks(&screen);
-		render_grid(&screen);
-	}
-	else
-		return (2);
-	return (0);
+	scale = (int *)args;
+	pixel->x *= *scale;
+	pixel->y *= *scale;
+}
+
+void	rotate(t_pixel *pixel, void *args)
+{
+	int	*scale;
+	int	x;
+	int	y;
+
+	scale = (int *)args;
+	x = ((pixel->x * 0) + (pixel->y * -1));
+	y = ((pixel->x * 1) + (pixel->y * 0));
+	pixel->x = x;
+	pixel->y = y;
 }

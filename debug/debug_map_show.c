@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_table.c                                       :+:      :+:    :+:   */
+/*   debug_map_show.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 03:21:08 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/22 06:04:26 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/07/28 06:00:19 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/07/28 06:00:36 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-void	free_table(char **table)
+void	map_show(t_pixel **map, char selector)
 {
-	char **tmp;
+	t_pixel	*line;
+	int		column;
 
-	tmp = table;
-	while(*table)
-		free(*table++);
-	free(tmp);
-}
-
-void	free_map(t_pixel **table)
-{
-	t_pixel **tmp;
-
-	tmp = table;
-	while(*table)
-		free(*table++);
-	free(tmp);
+	while (*map)
+	{
+		line = *map;
+		column = 0;
+		while (line)
+		{
+			if (selector == 'column')
+				printf("%3d", line[column].column);
+			if (selector == 'y')
+				printf("%3d", line[column].y);
+			if (selector == 'z')
+				printf("%3d", line[column].z);
+			if (line[column].eol)
+				break ;
+			column++;
+		}
+		printf("\n");
+		map++;
+	}
 }

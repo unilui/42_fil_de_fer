@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_pixel_put.c                                    :+:      :+:    :+:   */
+/*   pixel_put.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 07:15:52 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/27 02:03:39 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/28 05:31:52 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-void	img_pixel_put(t_img *img, int x, int y, int color)
+void	pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*addr;
 	int		*pixel;

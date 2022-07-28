@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 05:57:22 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/27 07:58:54 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/28 06:02:07 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ void	map_info(t_pixel **map, int *columns, int *rows)
 
 void	put_coordinates(t_pixel **map, int x_start, int y_start)
 {
-	t_pixel *line;
+	t_pixel	*line;
 	int		column;
 	int		x;
 
 	x = x_start;
-	while(*map)
+	while (*map)
 	{
 		line = *map;
 		column = 0;
 		x_start = x;
-		while(line)
+		while (line)
 		{
 			line[column].x = x_start;
 			line[column].y = y_start;
@@ -47,48 +47,6 @@ void	put_coordinates(t_pixel **map, int x_start, int y_start)
 		y_start--;
 		map++;
 	}
-}
-
-void	map_iterator(t_pixel **map, void (*funct)(t_pixel*, void*), void *args)
-{
-	t_pixel	*line;
-	int		column;
-
-	while (*map)
-	{
-		line = *map;
-		column = 0;
-		while (line)
-		{
-			funct((line + column), args);
-			if (line[column].eol)
-				break;
-			column++;
-		}
-		map++;
-	}
-}
-
-void	scale(t_pixel *pixel, void *args)
-{
-	int	*scale;
-
-	scale = (int *)args;
-	pixel->x *= *scale;
-	pixel->y *= *scale;
-}
-
-void	rotate_90(t_pixel *pixel, void *args)
-{
-	int	*scale;
-	int	x;
-	int	y;
-
-	scale = (int *)args;
-	x = ((pixel->x * 0) + (pixel->y * -1));
-	y = ((pixel->x * 1) + (pixel->y * 0));
-	pixel->x = x;
-	pixel->y = y;
 }
 
 void	center_axis(t_pixel **map)
@@ -108,11 +66,13 @@ void	center_axis(t_pixel **map)
 
 void	render_grid(t_screen *screen)
 {
-	int nbr;
+	int	nbr;
+	int	nb1;
 
-	nbr = 40;
+	nbr = 30;
+	nb1 = 90;
 	center_axis(screen->map);
 	map_iterator(screen->map, &scale, &nbr);
-	map_iterator(screen->map, &rotate_90, &nbr);
+	map_iterator(screen->map, &rotate, &nb1);
 	mlx_loop(screen->mlx);
 }

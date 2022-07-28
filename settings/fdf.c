@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_background.c                                :+:      :+:    :+:   */
+/*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/23 07:20:13 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/27 02:14:44 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/07/21 01:39:57 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/07/28 06:04:38 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-int render_background(t_img *img, int color)
+int	main(int argc, char **argv)
 {
-	int	x;
-	int	y;
+	t_screen	screen;
 
-	y = img->limits.top;
-	while (y >= img->limits.bottom)
+	if (argc == 2)
 	{
-		x = img->limits.left;
-		while (x <= img->limits.right)
-			img_pixel_put(img, x++, y, color);
-		y--;
+		screen = load_mlx();
+		screen.map = load_map(argv[1]);
+		load_hooks(&screen);
+		render_grid(&screen);
 	}
+	else
+		return (2);
 	return (0);
 }
