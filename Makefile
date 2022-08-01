@@ -6,13 +6,15 @@ SRCS 		=	settings/fdf.c \
 				events/load_hooks.c \
 				events/handle_input.c \
 				events/exit_fdf.c \
-				render/render_grid.c \
 				render/pixel_put.c \
 				render/background.c \
 				render/render.c \
 				render/bresenham_line.c \
+				render/draw_map.c \
 				transform/map_iterator.c \
-				transform/transformations.c
+				transform/transformations.c \
+				transform/center_origin.c \
+				transform/isometric_view.c
 
 OBJS		=	${SRCS:%.c=$(OBJS_DIR)%.o}
 OBJS_DIR	=	objects/

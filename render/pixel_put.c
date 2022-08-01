@@ -23,7 +23,7 @@ void	pixel_put(t_img *img, int x, int y, int color)
 		return ;
 	if (y > img->limits.top || y < img->limits.bottom)
 		return ;
-	y_map = (img->limits.top + y) * img->line_len;
+	y_map = (img->limits.top - y) * img->line_len;
 	x_map = (img->limits.right + x) * (img->bpp / 8);
 	addr = img->addr + y_map + x_map;
 	pixel = (int *)addr;

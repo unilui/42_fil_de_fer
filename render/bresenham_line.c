@@ -80,7 +80,13 @@ void	x_axis_fast(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img)
 
 void	y_axis_pixel(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img)
 {
-	pixel_put(img, start->x, start->y, rgb_encode(255, 140, 190));
+	int color;
+
+	if (start->z > 0)
+		color = rgb_encode(0, 0, 255);
+	else
+		color = rgb_encode(0, 0, 0);
+	pixel_put(img, start->x, start->y, color);
 	bsh->eps += bsh->adx;
 	if (bsh->eps * 2 >= bsh->ady)
 	{
@@ -91,7 +97,13 @@ void	y_axis_pixel(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img)
 
 void	x_axis_pixel(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img)
 {
-	pixel_put(img, start->x, start->y, rgb_encode(255, 140, 190));
+	int color;
+
+	if (start->z > 0)
+		color = rgb_encode(0, 0, 255);
+	else
+		color = rgb_encode(0, 0, 0);
+	pixel_put(img, start->x, start->y, color);
 	bsh->eps += bsh->ady;
 	if (bsh->eps * 2 >= bsh->adx)
 	{

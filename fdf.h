@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:48:30 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/28 05:59:07 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/07/31 17:23:40 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,20 @@ void		free_table(char **table);
 void		free_map(t_pixel **table);
 t_screen	load_mlx(void);
 void		load_hooks(t_screen *screen);
-void		render_grid(t_screen *screen);
+void		isometric_view(t_screen *screen);
 void		pixel_put(t_img *img, int x, int y, int color);
 int			background(t_img *img, int color);
 int			render(t_screen *screen);
 int			handle_input(int keysym, t_screen *screen);
 int			sair(t_screen *screen);
 void		bresenham_line(t_img *img, t_pixel start, t_pixel end);
-void		map_iterator(t_pixel **map
+void		map_iterator(t_pixel **map,
 				void (*funct)(t_pixel*, void*),
 				void *args);
 void		scale(t_pixel *pixel, void *args);
 void		rotate(t_pixel *pixel, void *args);
-
+void		smash(t_pixel *pixel, void *args);
+void		up_z(t_pixel *pixel, void *args);
+void		draw_map(t_img *img, t_pixel **map);
+void		center_origin(t_pixel **map);
 #endif

@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_grid.c                                      :+:      :+:    :+:   */
+/*   center_origin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/23 05:57:22 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/28 06:02:07 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/07/31 17:09:44 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/07/31 17:11:35 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-void	map_info(t_pixel **map, int *columns, int *rows)
+static void	put_coordinates(t_pixel **map, int x_start, int y_start);
+
+void	center_origin(t_pixel **map)
 {
 	t_pixel	*line;
-
+	t_pixel	**tmp;
+	int	x_start;
+	int	y_start;
+	
+	x_start = 0;
+	y_start = 0;
+	tmp = map;
 	line = *map;
-	while (!line[(*columns)++].eol)
-		(*columns)++;
-	while (*map++)
-		(*rows)++;
+	while (!line[x_start].eol)
+		x_start++;
+	x_start++;
+	while (*tmp++)
+		y_start++;
+	x_start = -(x_start / 2);
+	y_start = (y_start / 2);
+	put_coordinates(map, x_start, y_start);
 }
 
-void	put_coordinates(t_pixel **map, int x_start, int y_start)
+static void	put_coordinates(t_pixel **map, int x_start, int y_start)
 {
 	t_pixel	*line;
 	int		column;
@@ -47,32 +59,4 @@ void	put_coordinates(t_pixel **map, int x_start, int y_start)
 		y_start--;
 		map++;
 	}
-}
-
-void	center_axis(t_pixel **map)
-{
-	int	columns;
-	int	rows;
-	int	x_start;
-	int	y_start;
-
-	columns = 0;
-	rows = 0;
-	map_info(map, &columns, &rows);
-	x_start = -(columns / 2);
-	y_start = (rows / 2);
-	put_coordinates(map, x_start, y_start);
-}
-
-void	render_grid(t_screen *screen)
-{
-	int	nbr;
-	int	nb1;
-
-	nbr = 30;
-	nb1 = 90;
-	center_axis(screen->map);
-	map_iterator(screen->map, &scale, &nbr);
-	map_iterator(screen->map, &rotate, &nb1);
-	mlx_loop(screen->mlx);
 }

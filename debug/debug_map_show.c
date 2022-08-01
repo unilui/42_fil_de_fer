@@ -21,8 +21,8 @@ void	map_show(t_pixel **map, char selector)
 		column = 0;
 		while (line)
 		{
-			if (selector == 'column')
-				printf("%3d", line[column].column);
+			if (selector == 'x')
+				printf("%3d", line[column].x);
 			if (selector == 'y')
 				printf("%3d", line[column].y);
 			if (selector == 'z')
