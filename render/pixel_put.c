@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pixel_put.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 07:15:52 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/28 05:31:52 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/03 01:37:42 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	pixel_put(t_img *img, int x, int y, int color)
 {

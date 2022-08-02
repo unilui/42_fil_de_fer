@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   handle_input.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 07:44:03 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/23 07:51:11 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/03 01:38:30 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 int	handle_input(int keysym, t_screen *screen)
 {

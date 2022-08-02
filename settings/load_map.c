@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   load_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 02:36:13 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/31 22:39:34 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/03 01:43:14 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
-#include "../libft/libft.h"
+#include "fdf.h"
+#include "libft.h"
 
 static int		all_lines(char *file_path);
 static int		line_len(char *file_path);

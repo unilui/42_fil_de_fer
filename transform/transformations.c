@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   transformations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 05:28:30 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/28 05:29:25 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/03 01:38:53 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	scale(t_pixel *pixel, void *args)
 {

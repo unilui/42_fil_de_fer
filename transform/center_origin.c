@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   center_origin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 17:09:44 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/31 17:11:35 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/03 01:38:43 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 static void	put_coordinates(t_pixel **map, int x_start, int y_start);
 

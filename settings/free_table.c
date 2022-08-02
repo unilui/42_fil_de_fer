@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free_table.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 03:21:08 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/28 06:05:05 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/03 01:36:43 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fdf.h"
+#include "fdf.h"
 
 void	free_table(char **table)
 {

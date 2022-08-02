@@ -31,7 +31,7 @@ endif
 
 $(OBJS_DIR)%.o:	%.c
 			@mkdir -p $(dir $@)
-			@$(CC) -g -c $< -o $@
+			@$(CC) -g -c $< -o $@ -I includes
 
 $(NAME):	$(OBJS)
 			@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBS)
