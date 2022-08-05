@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:28:41 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/03 01:37:37 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/05 00:32:53 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	x_axis_fast(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img);
 void	y_axis_fast(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img);
-void	x_axis_pixel(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img);
-void	y_axis_pixel(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img);
+void	x_axis_pixel(t_bsh *bsh, t_pixel *start, t_img *img);
+void	y_axis_pixel(t_bsh *bsh, t_pixel *start, t_img *img);
 
 void	bresenham_line(t_img *img, t_pixel start, t_pixel end)
 {
@@ -44,7 +44,7 @@ void	y_axis_fast(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img)
 	{
 		while (start->y >= end->y)
 		{
-			y_axis_pixel(bsh, start, end, img);
+			y_axis_pixel(bsh, start, img);
 			start->y += bsh->sy;
 		}
 	}
@@ -52,7 +52,7 @@ void	y_axis_fast(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img)
 	{
 		while (start->y <= end->y)
 		{
-			y_axis_pixel(bsh, start, end, img);
+			y_axis_pixel(bsh, start, img);
 			start->y += bsh->sy;
 		}
 	}
@@ -64,7 +64,7 @@ void	x_axis_fast(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img)
 	{
 		while (start->x >= end->x)
 		{
-			x_axis_pixel(bsh, start, end, img);
+			x_axis_pixel(bsh, start, img);
 			start->x += bsh->sx;
 		}
 	}
@@ -72,15 +72,15 @@ void	x_axis_fast(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img)
 	{
 		while (start->x <= end->x)
 		{
-			x_axis_pixel(bsh, start, end, img);
+			x_axis_pixel(bsh, start, img);
 			start->x += bsh->sx;
 		}
 	}
 }
 
-void	y_axis_pixel(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img)
+void	y_axis_pixel(t_bsh *bsh, t_pixel *start, t_img *img)
 {
-	int color;
+	int	color;
 
 	if (start->z > 0)
 		color = rgb_encode(0, 0, 255);
@@ -95,9 +95,9 @@ void	y_axis_pixel(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img)
 	}
 }
 
-void	x_axis_pixel(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img)
+void	x_axis_pixel(t_bsh *bsh, t_pixel *start, t_img *img)
 {
-	int color;
+	int	color;
 
 	if (start->z > 0)
 		color = rgb_encode(0, 0, 255);

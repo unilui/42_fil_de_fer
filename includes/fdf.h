@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:48:30 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/03 01:42:56 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/05 02:25:49 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,22 @@ typedef struct s_img
 	t_limits	limits;
 }	t_img;
 
+typedef struct s_map_info
+{
+	int columns;
+	int rows;
+	int scale;
+}	t_map_info;
+
 typedef struct s_screen
 {
-	void	*mlx;
-	void	*window;
-	t_img	img;
-	t_pixel	**map;
-	int		width;
-	int		height;
+	void		*mlx;
+	void		*window;
+	t_img		img;
+	t_pixel		**map;
+	t_map_info	map_info;
+	int			width;
+	int			height;
 }	t_screen;
 
 typedef struct s_bresenham
@@ -95,4 +103,8 @@ void		smash(t_pixel *pixel, void *args);
 void		up_z(t_pixel *pixel, void *args);
 void		draw_map(t_img *img, t_pixel **map);
 void		center_origin(t_pixel **map);
+int			map_count_columns(t_pixel **map);
+int			map_count_rows(t_pixel **map);
+void		map_get_data(t_screen *screen);
+
 #endif

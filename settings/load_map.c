@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 02:36:13 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/03 01:43:14 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/05 02:12:47 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,15 @@ t_pixel	**load_map(char *file_path)
 
 	y = 0;
 	fd = open(file_path, O_RDONLY);
-	if (fd != -1)
-		lines = all_lines(file_path);
-		len = line_len(file_path);
-	if (lines)
-	{
-		map = malloc((lines + 1) * sizeof(t_pixel *));
-		if (!map)
-			return (NULL);
-		while (y < lines)
-			map[y++] = split_line(fd, len);
-		map[y] = NULL;
-		close(fd);
-	}
+	lines = all_lines(file_path);
+	len = line_len(file_path);
+	map = malloc((lines + 1) * sizeof(t_pixel *));
+	if (!map)
+		return (NULL);
+	while (y < lines)
+		map[y++] = split_line(fd, len);
+	map[y] = NULL;
+	close(fd);
 	return (map);
 }
 

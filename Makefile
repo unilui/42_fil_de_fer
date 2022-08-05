@@ -2,6 +2,7 @@ SRCS 		=	settings/fdf.c \
 				settings/load_map.c \
 				settings/free_table.c \
 				settings/load_mlx.c \
+				settings/map_get_data.c \
 				color/color_functions.c \
 				events/load_hooks.c \
 				events/handle_input.c \
@@ -21,7 +22,7 @@ OBJS_DIR	=	objects/
 HEADER 		=	fdf.h
 NAME		=	fdf
 CC			=	cc
-CFLAGS		=	-g
+CFLAGS		=	-g -Wall -Wextra -Werror
 LIBS		=	libft/libft.a -lmlx -lX11 -lXext -lm
 RM			=	rm -rf
 
@@ -31,10 +32,10 @@ endif
 
 $(OBJS_DIR)%.o:	%.c
 			@mkdir -p $(dir $@)
-			@$(CC) -g -c $< -o $@ -I includes
+			@$(CC) $(CFLAGS) -c $< -o $@ -I includes
 
 $(NAME):	$(OBJS)
-			@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBS)
+			@$(CC) $(OBJS) -o $(NAME) $(LIBS)
 
 all:		$(NAME)
 
