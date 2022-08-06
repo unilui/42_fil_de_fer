@@ -6,24 +6,24 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 05:26:36 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/03 01:36:53 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/05 23:22:54 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_screen	load_mlx(void)
+t_screen	load_mlx(int width, int height, char *file_name)
 {
 	t_screen	screen;
 
-	screen.width = 1280; // Pegar do arquivo config
-	screen.height = 720;
+	screen.width = width;
+	screen.height = height;
 	screen.mlx = mlx_init();
 	screen.window = mlx_new_window(
 			screen.mlx,
 			screen.width,
 			screen.height,
-			"Hello, screen!"); // Nome do arquivo carregado
+			file_name); // Nome do arquivo carregado
 	screen.img.mlx_img = mlx_new_image(
 			screen.mlx,
 			screen.width,

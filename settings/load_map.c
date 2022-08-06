@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 02:36:13 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/05 02:12:47 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/05 21:21:48 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,7 @@ static t_pixel	pixel_format(char *data)
 	pixel.z = ft_atoi(data);
 	pixel.eol = 0;
 	if (ft_strrchr(data, ','))
-		pixel.color = rgb_encode(255, 255, 255);
-		// Mudar pra função que converte hexa
+		pixel.color = ft_hexatoi(ft_strrchr(data, ',') + 1);
 	else
 		pixel.color = rgb_encode(255, 255, 255);
 	return (pixel);

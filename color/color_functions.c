@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:53:24 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/03 01:38:37 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/05 21:19:27 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,27 @@ int	rgb_encode(short int red, short int green, short int blue)
 	color.rgb[1] = green;
 	color.rgb[0] = blue;
 	return (color.color);
+}
+
+int	ft_hexatoi(const char *nptr)
+{
+	int	num;
+
+	num = 0;
+	while (*nptr == '0' || *nptr == 'x')
+		nptr++;
+	while ((*nptr >= '0' && *nptr <= '9')
+			|| (*nptr >= 'a' && *nptr <= 'f')
+			|| (*nptr >= 'A' && *nptr <= 'F'))
+	{
+		num = num * 16;
+		if (*nptr >= '0' && *nptr <= '9')
+			num += *nptr - '0';
+		if (*nptr >= 'a' && *nptr <= 'f')
+			num += *nptr - 87;
+		if (*nptr >= 'A' && *nptr <= 'F')
+			num += *nptr - 55;
+		nptr++;
+	}
+	return (num);
 }

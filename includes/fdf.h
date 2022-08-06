@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:48:30 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/05 02:25:49 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/05 23:52:03 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int			rgb_encode(short int red, short int green, short int blue);
 t_pixel		**load_map(char *file_path);
 void		free_table(char **table);
 void		free_map(t_pixel **table);
-t_screen	load_mlx(void);
+t_screen	load_mlx(int width, int height, char *file_name);
 void		load_hooks(t_screen *screen);
 void		isometric_view(t_screen *screen);
 void		pixel_put(t_img *img, int x, int y, int color);
@@ -106,5 +106,7 @@ void		center_origin(t_pixel **map);
 int			map_count_columns(t_pixel **map);
 int			map_count_rows(t_pixel **map);
 void		map_get_data(t_screen *screen);
+int			ft_hexatoi(const char *nptr);
+char		*map_validate(char *file_path);
 
 #endif

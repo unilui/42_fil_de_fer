@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 23:28:41 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/05 00:32:53 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/05 21:22:53 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,7 @@ void	x_axis_fast(t_bsh *bsh, t_pixel *start, t_pixel *end, t_img *img)
 
 void	y_axis_pixel(t_bsh *bsh, t_pixel *start, t_img *img)
 {
-	int	color;
-
-	if (start->z > 0)
-		color = rgb_encode(0, 0, 255);
-	else
-		color = rgb_encode(0, 0, 0);
-	pixel_put(img, start->x, start->y, color);
+	pixel_put(img, start->x, start->y, start->color);
 	bsh->eps += bsh->adx;
 	if (bsh->eps * 2 >= bsh->ady)
 	{
@@ -97,13 +91,7 @@ void	y_axis_pixel(t_bsh *bsh, t_pixel *start, t_img *img)
 
 void	x_axis_pixel(t_bsh *bsh, t_pixel *start, t_img *img)
 {
-	int	color;
-
-	if (start->z > 0)
-		color = rgb_encode(0, 0, 255);
-	else
-		color = rgb_encode(0, 0, 0);
-	pixel_put(img, start->x, start->y, color);
+	pixel_put(img, start->x, start->y, start->color);
 	bsh->eps += bsh->ady;
 	if (bsh->eps * 2 >= bsh->adx)
 	{

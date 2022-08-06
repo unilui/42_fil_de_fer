@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 07:27:39 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/03 01:37:45 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/05 23:12:39 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	render(t_screen *screen)
 {
-	background(&screen->img, rgb_encode(255, 255, 255));
 	draw_map(&screen->img, screen->map);
 	mlx_put_image_to_window(
 		screen->mlx,
