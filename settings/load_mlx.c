@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 05:26:36 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/05 23:22:54 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/11 10:38:41 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_screen	load_mlx(int width, int height, char *file_name)
 			screen.mlx,
 			screen.width,
 			screen.height,
-			file_name); // Nome do arquivo carregado
+			file_name);
 	screen.img.mlx_img = mlx_new_image(
 			screen.mlx,
 			screen.width,

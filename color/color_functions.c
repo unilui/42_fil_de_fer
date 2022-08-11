@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:53:24 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/05 21:19:27 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/11 12:52:40 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	ft_hexatoi(const char *nptr)
 	while (*nptr == '0' || *nptr == 'x')
 		nptr++;
 	while ((*nptr >= '0' && *nptr <= '9')
-			|| (*nptr >= 'a' && *nptr <= 'f')
-			|| (*nptr >= 'A' && *nptr <= 'F'))
+		|| (*nptr >= 'a' && *nptr <= 'f')
+		|| (*nptr >= 'A' && *nptr <= 'F'))
 	{
 		num = num * 16;
 		if (*nptr >= '0' && *nptr <= '9')

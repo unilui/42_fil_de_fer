@@ -1,9 +1,12 @@
 SRCS 		=	settings/fdf.c \
+				settings/read_map.c \
 				settings/load_map.c \
+				settings/create_map.c \
 				settings/free_table.c \
 				settings/load_mlx.c \
 				settings/map_get_data.c \
 				settings/map_validate.c \
+				settings/message.c \
 				color/color_functions.c \
 				events/load_hooks.c \
 				events/handle_input.c \

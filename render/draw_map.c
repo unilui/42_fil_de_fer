@@ -3,16 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 17:08:00 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/03 01:37:40 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/11 12:53:33 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	draw_map(t_img *img, t_pixel **map)
+static void	draw(t_img *img, t_pixel **map);
+
+void	draw_map(t_screen *screen)
+{
+	isometric_view(screen);
+	draw(&screen->img, screen->map_view);
+}
+
+static void	draw(t_img *img, t_pixel **map)
 {
 	int	line;
 	int	column;

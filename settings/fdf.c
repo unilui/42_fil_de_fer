@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lufelip2 <lufelip2@student.42sp.org.br     +#+  +:+       +#+        */
+/*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 01:39:57 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/06 02:21:50 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/11 13:05:07 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@ int	main(int argc, char **argv)
 		if (file_name)
 		{
 			screen = load_mlx(1280, 720, file_name);
-			screen.map = load_map(argv[1]);
-			map_get_data(&screen);
+			load_map(&screen, argv[1]);
 			load_hooks(&screen);
-			isometric_view(&screen);
 			mlx_loop(screen.mlx);
 		}
 		else
-			return (2);
+			return (message(FILE_ERROR));
 	}
 	else
-		return (2);
+		return (message(MISSING_FILE));
 	return (0);
 }
