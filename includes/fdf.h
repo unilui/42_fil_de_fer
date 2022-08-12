@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:48:30 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/11 13:04:32 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/12 22:07:05 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <mlx.h>
 # include <X11/keysym.h>
 # include <math.h>
-# include <stdio.h>
 
 # define MISSING_FILE "Usage : ./fdf <filename>\n"
 # define FILE_ERROR "\
@@ -122,5 +121,6 @@ t_pixel		**create_map(int rows, int columns);
 void		map_copy(t_pixel **src, t_pixel **dest);
 void		move(t_pixel *pixel, void *args);
 int			message(char *str);
+int			handle_mouse(int button, int x, int y, t_screen *screen);
 
 #endif

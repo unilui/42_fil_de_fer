@@ -6,7 +6,7 @@
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 21:26:01 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/07/24 12:08:29 by lufelip2         ###   ########.fr       */
+/*   Updated: 2022/08/12 21:36:22 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,26 +115,23 @@ static char	*delete_fd(t_file **head, int fd)
 	t_file	*tmp;
 
 	tmp = *head;
-	if (tmp)
+	while (tmp)
 	{
-		while (tmp)
+		if (tmp->fd == fd)
 		{
-			if (tmp->fd == fd)
-			{
-				if (tmp == *head)
-					*head = tmp->next;
-				else
-					previous->next = tmp->next;
-				if (tmp->buffer)
-					free(tmp->buffer);
-				if (tmp->line)
-					free(tmp->line);
-				free(tmp);
-				return (NULL);
-			}
-			previous = tmp;
-			tmp = tmp->next;
+			if (tmp == *head)
+				*head = tmp->next;
+			else
+				previous->next = tmp->next;
+			if (tmp->buffer)
+				free(tmp->buffer);
+			if (tmp->line)
+				free(tmp->line);
+			free(tmp);
+			return (NULL);
 		}
+		previous = tmp;
+		tmp = tmp->next;
 	}
 	return (NULL);
 }

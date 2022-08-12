@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_hooks.c                                       :+:      :+:    :+:   */
+/*   handle_mouse.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lufelip2 <lufelip2@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/23 05:42:04 by lufelip2          #+#    #+#             */
-/*   Updated: 2022/08/12 22:07:38 by lufelip2         ###   ########.fr       */
+/*   Created: 2022/08/12 22:07:23 by lufelip2          #+#    #+#             */
+/*   Updated: 2022/08/12 22:08:12 by lufelip2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	load_hooks(t_screen *screen)
+int	handle_mouse(int button, int x, int y, t_screen *screen)
 {
-	mlx_loop_hook(screen->mlx, &render, screen);
-	mlx_key_hook(screen->window, &handle_input, screen);
-	mlx_mouse_hook(screen->window, &handle_mouse, screen);
-	mlx_hook(screen->window, 17, 0, &exit_fdf, screen);
+	if (button == 5)
+	{
+		screen->map_info.scale += 1;
+	}
+	if (button == 4)
+	{
+		if (screen->map_info.scale - 1 > 0)
+			screen->map_info.scale -= 1;
+	}
+	(void)x;
+	(void)y;
+	(void)screen;
+	return (0);
 }

@@ -30,10 +30,10 @@ $(OBJS_DIR)%.o:	%.c
 			@mkdir -p $(dir $@)
 			@$(CC) $(CFLAGS) -c $< -o $@
 
+all:		$(NAME)
+
 $(NAME):	$(OBJS)
 			@$(AR) $(NAME) $(OBJS) $(HEADER)
-
-all:		(NAME)
 
 clean:
 			@$(RM) $(OBJS_DIR)

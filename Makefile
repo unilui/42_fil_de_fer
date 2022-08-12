@@ -10,6 +10,7 @@ SRCS 		=	settings/fdf.c \
 				color/color_functions.c \
 				events/load_hooks.c \
 				events/handle_input.c \
+				events/handle_mouse.c \
 				events/exit_fdf.c \
 				render/pixel_put.c \
 				render/background.c \
@@ -26,27 +27,29 @@ OBJS_DIR	=	objects/
 HEADER 		=	fdf.h
 NAME		=	fdf
 CC			=	cc
-CFLAGS		=	-g -Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror
 LIBS		=	libft/libft.a -lmlx -lX11 -lXext -lm
 RM			=	rm -rf
-
-ifeq ($(shell uname), Darwin) # MacOS
-	LIBS	:=	libft/libft.a -lmlx -framework OpenGL -framework AppKit
-endif
 
 $(OBJS_DIR)%.o:	%.c
 			@mkdir -p $(dir $@)
 			@$(CC) $(CFLAGS) -c $< -o $@ -I includes
 
-$(NAME):	$(OBJS)
+all:		$(NAME)
+
+$(NAME):	$(OBJS) libft
 			@$(CC) $(OBJS) -o $(NAME) $(LIBS)
 
-all:		$(NAME)
+libft:
+			@make -C libft --no-print-directory
+
+libft_fclean:
+			@make fclean -C libft --no-print-directory
 
 run:		re
 			./$(NAME) test_maps/42.fdf
 
-clean:
+clean:		libft_fclean
 			@$(RM) $(OBJS_DIR)
 
 fclean:		clean
@@ -54,4 +57,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re run
+.PHONY:		all clean fclean re run libft
